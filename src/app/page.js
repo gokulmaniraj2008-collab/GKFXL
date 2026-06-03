@@ -9,7 +9,7 @@ const supabase = createClient(
 );
 
 const C = {
-  dark:"#09090f", darkSurface:"#111118", darkCard:"#18181f", darkBorder:"#27272f",
+  dark:"#09090f", bg:"#09090f", darkSurface:"#111118", darkCard:"#18181f", darkBorder:"#27272f",
   indigo:"#6366f1", indigoDim:"#6366f115", indigoHover:"#818cf8",
   green:"#22c55e", greenDim:"#22c55e15", amber:"#f59e0b", amberDim:"#f59e0b15",
   navy:"#0d1b3e", navyMid:"#1a2d5a", blue:"#1847b0", blueSoft:"#e8eef8",
@@ -187,7 +187,7 @@ const ProjectModal = ({ project:p, onClose }) => (
 );
 
 // ── Landing Page ───────────────────────────────────────────────────────────────
-const LandingPage = ({ onStartBuilder }) => {
+const IntroPage = ({ onGetStarted }) => {
   const [section, setSection] = useState("home");
   const [selProject, setSelProject] = useState(null);
   const skills = ["Next.js","React","TypeScript","Node.js","Express","Supabase","Firebase","Groq AI","WebRTC","Twilio","Nodemailer","Vercel","Render","GitHub"];
@@ -229,7 +229,7 @@ const LandingPage = ({ onStartBuilder }) => {
           ))}
         </div>
         <div style={{ display:"flex",gap:8 }}>
-          <button onClick={onStartBuilder} style={{ padding:"8px 14px",background:C.indigoDim,border:`1px solid ${C.indigo}40`,borderRadius:9,fontSize:12,fontWeight:700,color:C.indigo,cursor:"pointer",display:"flex",alignItems:"center",gap:6 }}>
+          <button onClick={onGetStarted} style={{ padding:"8px 14px",background:C.indigoDim,border:`1px solid ${C.indigo}40`,borderRadius:9,fontSize:12,fontWeight:700,color:C.indigo,cursor:"pointer",display:"flex",alignItems:"center",gap:6 }}>
             <Icon n="builder" size={13} color={C.indigo}/> AI Builder
           </button>
           <button onClick={()=>go("contact")} style={{ padding:"8px 14px",background:C.navy,border:"none",borderRadius:9,fontSize:12,fontWeight:700,color:"#fff",cursor:"pointer" }}>
@@ -297,13 +297,13 @@ const LandingPage = ({ onStartBuilder }) => {
                 </div>
                 <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:8 }}>
                   {["🍽️ Restaurant","🎨 Portfolio","💼 Business","🛒 Ecommerce"].map(opt=>(
-                    <button key={opt} onClick={onStartBuilder} style={{ padding:"9px 12px",background:C.darkSurface,border:`1px solid ${C.darkBorder}`,borderRadius:9,fontSize:12,color:C.textDim,cursor:"pointer",textAlign:"left" }}>
+                    <button key={opt} onClick={onGetStarted} style={{ padding:"9px 12px",background:C.darkSurface,border:`1px solid ${C.darkBorder}`,borderRadius:9,fontSize:12,color:C.textDim,cursor:"pointer",textAlign:"left" }}>
                       {opt}
                     </button>
                   ))}
                 </div>
               </div>
-              <button onClick={onStartBuilder} style={{ width:"100%",padding:"14px",background:C.indigo,color:"#fff",border:"none",borderRadius:12,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:10,fontFamily:"'Syne',sans-serif" }}>
+              <button onClick={onGetStarted} style={{ width:"100%",padding:"14px",background:C.indigo,color:"#fff",border:"none",borderRadius:12,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:10,fontFamily:"'Syne',sans-serif" }}>
                 Start Free AI Interview <Icon n="arrow" size={18} color="#fff"/>
               </button>
               <p style={{ fontSize:11,color:C.textDim,textAlign:"center",marginTop:10 }}>Sign in with Google — no password needed</p>
@@ -339,7 +339,7 @@ const LandingPage = ({ onStartBuilder }) => {
             <div style={{ background:`linear-gradient(135deg,#3730a3,${C.indigo})`,borderRadius:20,padding:"32px 28px" }}>
               <p style={{ fontFamily:"'Syne',sans-serif",fontSize:22,fontWeight:800,color:"#fff",marginBottom:8 }}>Build it yourself — free</p>
               <p style={{ fontSize:13,color:"rgba(255,255,255,0.55)",marginBottom:22,lineHeight:1.7 }}>Use AI Website Architect. Answer questions, get a full plan and generated website code.</p>
-              <button onClick={onStartBuilder} style={{ display:"inline-flex",alignItems:"center",gap:8,background:"#fff",color:C.indigo,border:"none",borderRadius:10,padding:"11px 18px",fontSize:13,fontWeight:700,cursor:"pointer" }}>
+              <button onClick={onGetStarted} style={{ display:"inline-flex",alignItems:"center",gap:8,background:"#fff",color:C.indigo,border:"none",borderRadius:10,padding:"11px 18px",fontSize:13,fontWeight:700,cursor:"pointer" }}>
                 <Icon n="builder" size={15} color={C.indigo}/> Try Free Now
               </button>
             </div>
@@ -399,7 +399,7 @@ const LandingPage = ({ onStartBuilder }) => {
             <div style={{ flex:1 }}>
               <p style={{ fontFamily:"'Syne',sans-serif",fontSize:14,fontWeight:800,color:"#fff",marginBottom:3 }}>Not sure what you need? Use AI Website Architect — Free</p>
               <p style={{ fontSize:12,color:"rgba(255,255,255,0.6)",marginBottom:12 }}>Answer questions, get a full website plan, then decide.</p>
-              <button onClick={onStartBuilder} style={{ background:"#fff",color:C.indigo,border:"none",borderRadius:8,padding:"8px 16px",fontSize:12,fontWeight:700,cursor:"pointer" }}>
+              <button onClick={onGetStarted} style={{ background:"#fff",color:C.indigo,border:"none",borderRadius:8,padding:"8px 16px",fontSize:12,fontWeight:700,cursor:"pointer" }}>
                 Try AI Builder Free →
               </button>
             </div>
@@ -508,7 +508,7 @@ const LandingPage = ({ onStartBuilder }) => {
             <div style={{ background:C.indigoDim,border:`1px solid ${C.indigo}30`,borderRadius:18,padding:"24px 20px",textAlign:"center" }}>
               <p style={{ fontFamily:"'Syne',sans-serif",fontSize:16,fontWeight:800,color:"#fff",marginBottom:6 }}>Build it yourself?</p>
               <p style={{ fontSize:12,color:C.textDim,marginBottom:18,lineHeight:1.6 }}>Use AI Website Architect — free forever.</p>
-              <button onClick={onStartBuilder} style={{ background:C.indigo,color:"#fff",border:"none",borderRadius:9,padding:"10px 16px",fontSize:12,fontWeight:700,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:7 }}>
+              <button onClick={onGetStarted} style={{ background:C.indigo,color:"#fff",border:"none",borderRadius:9,padding:"10px 16px",fontSize:12,fontWeight:700,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:7 }}>
                 <Icon n="builder" size={14} color="#fff"/> Try Free
               </button>
             </div>
@@ -793,7 +793,7 @@ const ProjectCard = ({ project, onDelete }) => {
   );
 };
 
-const BuilderPage = ({ user, onDone }) => {
+const BuilderPage = ({ user, onProjectSaved }) => {
   const [step, setStep] = useState("type");      // type | interview | workflow | generated
   const [websiteType, setWebsiteType] = useState("");
   const [phase, setPhase] = useState(0);         // 0-6 (phases 1-7)
