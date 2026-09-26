@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -15,6 +16,7 @@
     "@supabase/supabase-js": "^2.43.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3"
   }
